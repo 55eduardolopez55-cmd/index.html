@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mel Torres Agency | Public Relations & Strategic Positioning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-card: #141414;
+      --accent: #c9a96e;
+      --accent-light: #d4b87a;
+      --accent-dark: #a88b52;
+      --text-primary: #f5f0e8;
+      --text-secondary: #b8b0a0;
+      --text-muted: #6b6558;
+      --border: #2a2a2a;
+      --border-light: #3a3a3a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-dark);
+      border-radius: 3px;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.4s ease;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--text-primary);
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.4s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-line {
+      width: 60px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 2rem;
+      animation: expandLine 1.5s ease forwards;
+    }
+
+    @keyframes expandLine {
+      from { width: 0; opacity: 0; }
+      to { width: 60px; opacity: 1; }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 400;
+      letter-spacing: 8px;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      letter-spacing: 4px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.6s forwards;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.9s forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 7rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .section-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto;
+    }
+
+    .section-text {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ABOUT */
+    .about-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .about-text-block {
+      padding: 2rem 0;
+    }
+
+    .about-text-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .about-text-block p {
+      color: var(--text-secondary);
+      line-height: 1.9;
+      font-size: 1rem;
+    }
+
+    .about-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .about-visual-inner {
+      width: 280px;
+      height: 280px;
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .about-visual-inner::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: 15px;
+      bottom: 15px;
+      border: 1px solid var(--accent);
+      opacity: 0.3;
+    }
+
+    .about-visual-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .about-visual-label {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .service-card:hover::before {
+      transform: translateX(100%);
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      letter-spacing: 1px;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .service-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .service-list li {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 0.35rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .service-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent-dark);
+    }
+
+    .service-card:hover .service-list li {
+      color: var(--text-secondary);
+    }
+
+    /* EXPERIENCE */
+    .experience-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .exp-item {
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      background: var(--bg-primary);
+      transition: all 0.4s ease;
+    }
+
+    .exp-item:hover {
+      border-color: var(--accent-dark);
+    }
+
+    .exp-icon {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 1rem;
+      border: 1px solid var(--accent-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .exp-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-item p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* AUDIENCE */
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .audience-item {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .audience-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: all 0.4s ease;
+      transform: translateX(-50%);
+    }
+
+    .audience-item:hover {
+      border-color: var(--border-light);
+      background: var(--bg-card);
+    }
+
+    .audience-item:hover::after {
+      width: 60%;
+    }
+
+    .audience-item span {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      letter-spacing: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-tagline {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .footer-line {
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto 2rem;
+    }
+
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav {
+        padding: 1rem 1.5rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+      .section {
+        padding: 4rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">MEL TORRES <span>Agency</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#experience">Experiencia</a></li>
+    <li><a href="#audience">Audiencias</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-line"></div>
+  <h1 class="hero-title">MEL TORRES AGENCY</h1>
+  <p class="hero-subtitle">Public Relations & Strategic Positioning</p>
+  <p class="hero-desc">Conectamos historias, marcas y líderes con las audiencias que importan.</p>
+  <div class="hero-scroll">
+    <span>Descubrir</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="section" style="padding-bottom: 0;">
+    <div class="section-header reveal">
+      <span class="section-label">Identidad</span>
+      <h2 class="section-title">Quiénes Somos</h2>
+      <div class="section-line"></div>
+    </div>
+  </div>
+  <div class="about-content" style="padding: 3rem 2rem 7rem;">
+    <div class="about-text-block reveal">
+      <h3>Estrategia con propósito</h3>
+      <p>Mel Torres Agency es una consultoría de relaciones públicas y posicionamiento estratégico enfocada en crear oportunidades de visibilidad, conexión y crecimiento para marcas, profesionales y proyectos.</p>
+      <p style="margin-top: 1rem;">Desarrollamos estrategias de comunicación que fortalecen la presencia pública, generan vínculos con medios y construyen reputación.</p>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-visual-inner">
+        <div class="about-visual-number">12+</div>
+        <div class="about-visual-label">Años de experiencia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-header reveal">
+    <span class="section-label">Portafolio</span>
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <h3>PR & Media Relations</h3>
+      <p>Diseñamos estrategias para llevar historias relevantes a los espacios adecuados.</p>
+      <ul class="service-list">
+        <li>Estrategia de comunicación</li>
+        <li>Relación con medios</li>
+        <li>Gestión de entrevistas</li>
+        <li>Vinculación con periodistas y plataformas</li>
+        <li>Seguimiento editorial</li>
+        <li>Desarrollo de materiales de prensa</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <h3>Personal Branding</h3>
+      <p>Posicionamiento de autoridad para escritores, speakers, expertos y líderes.</p>
+      <ul class="service-list">
+        <li>Construcción de narrativa personal</li>
+        <li>Definición de mensajes clave</li>
+        <li>Posicionamiento como referente</li>
+        <li>Estrategia de presencia pública</li>
+        <li>Desarrollo de oportunidades de exposición</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <h3>Launch & Visibility</h3>
+      <p>Acompañamos lanzamientos y nuevos proyectos con estrategia enfocada en alcance.</p>
+      <ul class="service-list">
+        <li>Libros</li>
+        <li>Conferencias</li>
+        <li>Cursos</li>
+        <li>Marcas personales</li>
+        <li>Nuevos servicios</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <h3>Strategic Partnerships</h3>
+      <p>Creamos conexiones entre proyectos, organizaciones, marcas y comunidades.</p>
+      <ul class="service-list">
+        <li>Alianzas estratégicas</li>
+        <li>Colaboraciones</li>
+        <li>Vinculación con actores clave</li>
+        <li>Desarrollo de oportunidades comerciales</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="experience-section" id="experience">
+  <div class="section">
+    <div class="section-header reveal">
+      <span class="section-label">Trayectoria</span>
+      <h2 class="section-title">Nuestra Experiencia</h2>
+      <div class="section-line"></div>
+      <p class="section-text" style="margin-top: 1.5rem;">Más de 12 años trabajando en comunicación estratégica, relaciones públicas y gestión de proyectos de alto impacto.</p>
+    </div>
+    <div class="experience-grid">
+      <div class="exp-item reveal">
+        <div class="exp-icon">&#9670;</div>
+        <h4>Relaciones Públicas</h4>
+        <p>PR Estratégico</p>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-icon">&#9672;</div>
+        <h4>Producción de Eventos</h4>
+        <p>Coordinación integral</p>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-icon">&#9671;</div>
+        <h4>Comunicación Estratégica</h4>
+        <p>Mensaje y narrativa</p>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-icon">&#9670;</div>
+        <h4>Gestión de Proyectos</h4>
+        <p>Ejecución precisa</p>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-icon">&#9672;</div>
+        <h4>Vinculación con Medios</h4>
+        <p>Redes editoriales</p>
+      </div>
+      <div class="exp-item reveal">
+        <div class="exp-icon">&#9671;</div>
+        <h4>Experiencias de Marca</h4>
+        <p>Impacto memorable</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="audience">
+  <div class="section-header reveal">
+    <span class="section-label">Clientes</span>
+    <h2 class="section-title">¿A Quiénes Ayudamos?</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="audience-grid">
+    <div class="audience-item reveal"><span>Escritores y autores</span></div>
+    <div class="audience-item reveal"><span>Speakers y conferencistas</span></div>
+    <div class="audience-item reveal"><span>Coaches y expertos</span></div>
+    <div class="audience-item reveal"><span>Marcas personales</span></div>
+    <div class="audience-item reveal"><span>Empresas en posicionamiento México</span></div>
+    <div class="audience-item reveal"><span>Proyectos internacionales</span></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">MEL TORRES <span style="color: var(--accent); font-style: italic;">Agency</span></div>
+  <p class="footer-tagline">Public Relations & Strategic Positioning</p>
+  <div class="footer-line"></div>
+  <p class="footer-copy">&copy; 2026 Mel Torres Agency. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // Nav background on scroll
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      nav.style.background = 'rgba(10,10,10,0.95)';
+      nav.style.padding = '1rem 4rem';
+    } else {
+      nav.style.background = 'rgba(10,10,10,0.85)';
+      nav.style.padding = '1.5rem 4rem';
+    }
+  });
+</script>
+
+</body>
+</html>
