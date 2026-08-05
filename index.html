@@ -12,6 +12,7 @@
       --bg-primary: #0a0a0a;
       --bg-secondary: #111111;
       --bg-card: #141414;
+      --bg-plus: #0f0d08;
       --accent: #c9a96e;
       --accent-light: #d4b87a;
       --accent-dark: #a88b52;
@@ -20,17 +21,11 @@
       --text-muted: #6b6558;
       --border: #2a2a2a;
       --border-light: #3a3a3a;
+      --border-gold: #3d3320;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -40,23 +35,14 @@
       line-height: 1.7;
     }
 
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-primary);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--accent-dark);
-      border-radius: 3px;
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dark); border-radius: 3px; }
 
     /* NAV */
     .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
       padding: 1.5rem 4rem;
       display: flex;
@@ -68,7 +54,6 @@
       border-bottom: 1px solid var(--border);
       transition: all 0.4s ease;
     }
-
     .nav-logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem;
@@ -76,19 +61,8 @@
       letter-spacing: 3px;
       color: var(--text-primary);
     }
-
-    .nav-logo span {
-      color: var(--accent);
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
+    .nav-logo span { color: var(--accent); font-weight: 400; font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       color: var(--text-secondary);
       text-decoration: none;
@@ -99,25 +73,16 @@
       transition: color 0.3s ease;
       position: relative;
     }
-
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0;
-      height: 1px;
+      bottom: -6px; left: 0;
+      width: 0; height: 1px;
       background: var(--accent);
       transition: width 0.4s ease;
     }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { width: 100%; }
 
     /* HERO */
     .hero {
@@ -131,32 +96,22 @@
       position: relative;
       overflow: hidden;
     }
-
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
         radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.08) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.05) 0%, transparent 50%);
       pointer-events: none;
     }
-
     .hero-line {
-      width: 60px;
-      height: 1px;
+      width: 60px; height: 1px;
       background: var(--accent);
       margin-bottom: 2rem;
       animation: expandLine 1.5s ease forwards;
     }
-
-    @keyframes expandLine {
-      from { width: 0; opacity: 0; }
-      to { width: 60px; opacity: 1; }
-    }
+    @keyframes expandLine { from { width: 0; opacity: 0; } to { width: 60px; opacity: 1; } }
 
     .hero-title {
       font-family: 'Playfair Display', serif;
@@ -168,7 +123,6 @@
       opacity: 0;
       animation: fadeInUp 1s ease 0.3s forwards;
     }
-
     .hero-subtitle {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1rem, 2vw, 1.4rem);
@@ -180,7 +134,6 @@
       opacity: 0;
       animation: fadeInUp 1s ease 0.6s forwards;
     }
-
     .hero-desc {
       font-size: 1.1rem;
       color: var(--text-secondary);
@@ -189,11 +142,9 @@
       opacity: 0;
       animation: fadeInUp 1s ease 0.9s forwards;
     }
-
     .hero-scroll {
       position: absolute;
-      bottom: 3rem;
-      left: 50%;
+      bottom: 3rem; left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
@@ -202,35 +153,23 @@
       opacity: 0;
       animation: fadeIn 1s ease 1.5s forwards;
     }
-
     .hero-scroll span {
       font-size: 0.65rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--text-muted);
     }
-
     .hero-scroll-line {
-      width: 1px;
-      height: 40px;
+      width: 1px; height: 40px;
       background: linear-gradient(to bottom, var(--accent), transparent);
       animation: scrollPulse 2s ease infinite;
     }
-
     @keyframes scrollPulse {
       0%, 100% { opacity: 0.3; transform: scaleY(1); }
       50% { opacity: 1; transform: scaleY(1.2); }
     }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* SECTIONS */
     .section {
@@ -239,12 +178,10 @@
       margin: 0 auto;
       position: relative;
     }
-
     .section-header {
       text-align: center;
       margin-bottom: 4rem;
     }
-
     .section-label {
       font-size: 0.7rem;
       letter-spacing: 4px;
@@ -253,7 +190,6 @@
       margin-bottom: 1rem;
       display: block;
     }
-
     .section-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 4vw, 3.2rem);
@@ -262,14 +198,11 @@
       margin-bottom: 1.5rem;
       line-height: 1.2;
     }
-
     .section-line {
-      width: 40px;
-      height: 1px;
+      width: 40px; height: 1px;
       background: var(--accent);
       margin: 0 auto;
     }
-
     .section-text {
       color: var(--text-secondary);
       font-size: 1.05rem;
@@ -285,7 +218,6 @@
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -295,11 +227,7 @@
       margin: 0 auto;
       padding: 0 2rem;
     }
-
-    .about-text-block {
-      padding: 2rem 0;
-    }
-
+    .about-text-block { padding: 2rem 0; }
     .about-text-block h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
@@ -307,23 +235,19 @@
       margin-bottom: 1.5rem;
       color: var(--text-primary);
     }
-
     .about-text-block p {
       color: var(--text-secondary);
       line-height: 1.9;
       font-size: 1rem;
     }
-
     .about-visual {
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
     }
-
     .about-visual-inner {
-      width: 280px;
-      height: 280px;
+      width: 280px; height: 280px;
       border: 1px solid var(--border-light);
       display: flex;
       flex-direction: column;
@@ -331,18 +255,14 @@
       align-items: center;
       position: relative;
     }
-
     .about-visual-inner::before {
       content: '';
       position: absolute;
-      top: -15px;
-      left: -15px;
-      right: 15px;
-      bottom: 15px;
+      top: -15px; left: -15px;
+      right: 15px; bottom: 15px;
       border: 1px solid var(--accent);
       opacity: 0.3;
     }
-
     .about-visual-number {
       font-family: 'Playfair Display', serif;
       font-size: 5rem;
@@ -350,7 +270,6 @@
       color: var(--accent);
       line-height: 1;
     }
-
     .about-visual-label {
       font-size: 0.75rem;
       letter-spacing: 3px;
@@ -367,7 +286,6 @@
       max-width: 1000px;
       margin: 0 auto;
     }
-
     .service-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -376,29 +294,21 @@
       position: relative;
       overflow: hidden;
     }
-
     .service-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
       transform: translateX(-100%);
       transition: transform 0.6s ease;
     }
-
     .service-card:hover {
       border-color: var(--accent-dark);
       transform: translateY(-4px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
-
-    .service-card:hover::before {
-      transform: translateX(100%);
-    }
-
+    .service-card:hover::before { transform: translateX(100%); }
     .service-card h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.4rem;
@@ -407,19 +317,13 @@
       color: var(--text-primary);
       letter-spacing: 1px;
     }
-
     .service-card p {
       color: var(--text-secondary);
       font-size: 0.9rem;
       margin-bottom: 1.5rem;
       line-height: 1.7;
     }
-
-    .service-list {
-      list-style: none;
-      padding: 0;
-    }
-
+    .service-list { list-style: none; padding: 0; }
     .service-list li {
       color: var(--text-muted);
       font-size: 0.85rem;
@@ -428,17 +332,13 @@
       position: relative;
       transition: color 0.3s ease;
     }
-
     .service-list li::before {
       content: '—';
       position: absolute;
       left: 0;
       color: var(--accent-dark);
     }
-
-    .service-card:hover .service-list li {
-      color: var(--text-secondary);
-    }
+    .service-card:hover .service-list li { color: var(--text-secondary); }
 
     /* EXPERIENCE */
     .experience-section {
@@ -446,7 +346,6 @@
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-
     .experience-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -454,7 +353,6 @@
       max-width: 900px;
       margin: 0 auto;
     }
-
     .exp-item {
       text-align: center;
       padding: 2rem;
@@ -462,14 +360,9 @@
       background: var(--bg-primary);
       transition: all 0.4s ease;
     }
-
-    .exp-item:hover {
-      border-color: var(--accent-dark);
-    }
-
+    .exp-item:hover { border-color: var(--accent-dark); }
     .exp-icon {
-      width: 50px;
-      height: 50px;
+      width: 50px; height: 50px;
       margin: 0 auto 1rem;
       border: 1px solid var(--accent-dark);
       display: flex;
@@ -478,7 +371,6 @@
       font-size: 1.2rem;
       color: var(--accent);
     }
-
     .exp-item h4 {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
@@ -486,7 +378,6 @@
       color: var(--text-primary);
       margin-bottom: 0.5rem;
     }
-
     .exp-item p {
       font-size: 0.8rem;
       color: var(--text-muted);
@@ -502,7 +393,6 @@
       max-width: 900px;
       margin: 0 auto;
     }
-
     .audience-item {
       padding: 1.5rem;
       border: 1px solid var(--border);
@@ -510,33 +400,117 @@
       transition: all 0.4s ease;
       position: relative;
     }
-
     .audience-item::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 2px;
+      bottom: 0; left: 50%;
+      width: 0; height: 2px;
       background: var(--accent);
       transition: all 0.4s ease;
       transform: translateX(-50%);
     }
-
     .audience-item:hover {
       border-color: var(--border-light);
       background: var(--bg-card);
     }
-
-    .audience-item:hover::after {
-      width: 60%;
-    }
-
+    .audience-item:hover::after { width: 60%; }
     .audience-item span {
       font-size: 0.95rem;
       color: var(--text-secondary);
       font-weight: 400;
     }
+
+    /* ========== DIGITAL PLUS SECTION ========== */
+    .digital-plus-section {
+      background: var(--bg-plus);
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .digital-plus-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(201,169,110,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(201,169,110,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .digital-plus-badge {
+      display: inline-block;
+      border: 1px solid var(--accent-dark);
+      padding: 0.4rem 1.2rem;
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .digital-plus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .digital-card {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid var(--border-gold);
+      padding: 2.5rem 2rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .digital-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .digital-card:hover {
+      border-color: var(--accent-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+    }
+    .digital-card:hover::after { opacity: 1; }
+    .digital-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      letter-spacing: 1px;
+    }
+    .digital-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .digital-list { list-style: none; padding: 0; }
+    .digital-list li {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .digital-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .digital-card:hover .digital-list li { color: var(--text-secondary); }
 
     /* FOOTER */
     .footer {
@@ -545,28 +519,23 @@
       padding: 4rem 2rem 3rem;
       text-align: center;
     }
-
     .footer-logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       letter-spacing: 4px;
       margin-bottom: 1rem;
     }
-
     .footer-tagline {
       color: var(--text-muted);
       font-size: 0.85rem;
       letter-spacing: 2px;
       margin-bottom: 2rem;
     }
-
     .footer-line {
-      width: 30px;
-      height: 1px;
+      width: 30px; height: 1px;
       background: var(--accent);
       margin: 0 auto 2rem;
     }
-
     .footer-copy {
       color: var(--text-muted);
       font-size: 0.75rem;
@@ -579,38 +548,21 @@
       transform: translateY(40px);
       transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.active { opacity: 1; transform: translateY(0); }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      .nav {
-        padding: 1rem 1.5rem;
-      }
-      .nav-links {
-        display: none;
-      }
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      .experience-grid {
-        grid-template-columns: 1fr;
-      }
-      .audience-grid {
-        grid-template-columns: 1fr;
-      }
-      .section {
-        padding: 4rem 1.5rem;
-      }
+      .nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .about-content { grid-template-columns: 1fr; gap: 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .experience-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .digital-plus-grid { grid-template-columns: 1fr; }
+      .section { padding: 4rem 1.5rem; }
     }
   </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -621,6 +573,7 @@
     <li><a href="#services">Servicios</a></li>
     <li><a href="#experience">Experiencia</a></li>
     <li><a href="#audience">Audiencias</a></li>
+    <li><a href="#digital-plus">Digital Plus</a></li>
   </ul>
 </nav>
 
@@ -771,6 +724,69 @@
   </div>
 </section>
 
+<!-- ========== DIGITAL PLUS MODULE ========== -->
+<section class="digital-plus-section" id="digital-plus">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="digital-plus-badge">Servicio Plus</div>
+      <h2 class="section-title">Digital & Growth Suite</h2>
+      <div class="section-line"></div>
+      <p class="section-text" style="margin-top: 1.5rem;">Cuando la estrategia de PR necesita un motor digital. Amplificamos tu presencia con pauta, tecnología y conversión.</p>
+    </div>
+    <div class="digital-plus-grid">
+      <div class="digital-card reveal">
+        <h3>Paid Media & Performance</h3>
+        <p>Pauta publicitaria multicanal diseñada para escalar tu alcance y generar resultados medibles.</p>
+        <ul class="digital-list">
+          <li>Meta Ads (Facebook & Instagram)</li>
+          <li>Google Ads (Search, Display, YouTube)</li>
+          <li>TikTok Ads</li>
+          <li>Reddit Ads</li>
+          <li>Optimización de presupuesto y pujas</li>
+          <li>Retargeting y remarketing</li>
+        </ul>
+      </div>
+      <div class="digital-card reveal">
+        <h3>Estrategia Digital & Posicionamiento</h3>
+        <p>Construimos la voz, el nombre y la narrativa que te diferencian en el mercado digital.</p>
+        <ul class="digital-list">
+          <li>Naming y brand identity</li>
+          <li>Copywriting estratégico</li>
+          <li>Estrategia de contenido multicanal</li>
+          <li>Posicionamiento SEO y SERP</li>
+          <li>Auditoría de marca digital</li>
+          <li>Calendario editorial y plan de contenido</li>
+        </ul>
+      </div>
+      <div class="digital-card reveal">
+        <h3>Web & Landing Pages</h3>
+        <p>Diseño y desarrollo de experiencias digitales que convierten visitantes en clientes.</p>
+        <ul class="digital-list">
+          <li>Diseño de páginas web corporativas</li>
+          <li>Landing pages de alta conversión</li>
+          <li>Páginas de venta para cursos y eventos</li>
+          <li>Hosting y dominio</li>
+          <li>Responsive y optimización móvil</li>
+          <li>Integración con analytics y píxeles</li>
+        </ul>
+      </div>
+      <div class="digital-card reveal">
+        <h3>CRM & Captación de Leads</h3>
+        <p>Automatizamos tu funnel de ventas para que ningún lead se pierda en el camino.</p>
+        <ul class="digital-list">
+          <li>Implementación de CRM (HubSpot, Brevo, etc.)</li>
+          <li>Configuración de workflows automatizados</li>
+          <li>Formularios de captación integrados</li>
+          <li>Secuencias de email marketing</li>
+          <li>Asignación automática de leads a vendedores</li>
+          <li>Reportes y dashboards de conversión</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== END DIGITAL PLUS ========== -->
+
 <footer class="footer">
   <div class="footer-logo">MEL TORRES <span style="color: var(--accent); font-style: italic;">Agency</span></div>
   <p class="footer-tagline">Public Relations & Strategic Positioning</p>
@@ -779,29 +795,21 @@
 </footer>
 
 <script>
-  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('active');
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
   reveals.forEach(el => revealObserver.observe(el));
 
-  // Nav background on scroll
   const nav = document.querySelector('.nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
